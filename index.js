@@ -19,6 +19,17 @@ app.get("/produtos", async (req,res) => {
     console.log(prod)
 })
 
+app.put("/produto-venda/:id", async(req,res) => {
+    const { id } = req.params 
+    const prod = await db.SubtractProd(id)
+    res.status(200).json(prod)
+})
+
+app.put("/produto-compra/:id", async(req,res) => {
+    const { id } = req.params 
+    const prod = await db.SumProd(id)
+    res.status(200).json(prod)
+})
 
 app.listen(port)
 

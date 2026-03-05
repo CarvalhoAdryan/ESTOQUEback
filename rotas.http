@@ -2,12 +2,22 @@ POST http://localhost:3000/produtos
 Content-Type: application/json
 
 {
-    "produto": "Feijão",
-    "preco": 12,
-    "quantidade" : 3
+    "produto": "Peixe",
+    "preco": 35,
+    "quantidade" : 2
 }
 
 ###
 
 GET http://localhost:3000/produtos
+Content-Type: application/json
+
+###
+
+PUT http://localhost:3000/produto-venda/2
+Content-Type: application/json
+
+###
+
+PUT http://localhost:3000/produto-compra/2
 Content-Type: application/json

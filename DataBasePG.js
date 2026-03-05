@@ -14,5 +14,13 @@ export class postgres{
         return prod
     }
 
+    async SubtractProd(id){
+        const prod = await sql`UPDATE produtos SET quantidade = GREATEST(quantidade - 1, 0) WHERE id=${id} AND quantidade > 0 RETURNING *`
+    }
+
+    async SumProd(id){
+        const prod = await sql`UPDATE produtos SET quantidade = quantidade + 1 WHERE id=${id} RETURNING *`
+    }
+
 }
 
