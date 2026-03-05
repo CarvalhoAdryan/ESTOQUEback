@@ -31,6 +31,21 @@ app.put("/produto-compra/:id", async(req,res) => {
     res.status(200).json(prod)
 })
 
+app.put("/produto-compra/:id/:number", async(req,res) =>{
+    const { id, number } = req.params
+    const prod = await db.SumProds(id, number)
+    res.status(200).json(prod)
+})
+
+app.delete("/produtos/:id", async(req,res) => {
+    const { id } = req.params
+    const prod = await db.DeleteProd(id)
+    res.status(204)
+})
+
+
+
+
 app.listen(port)
 
 console.log("Backend Rodando")
