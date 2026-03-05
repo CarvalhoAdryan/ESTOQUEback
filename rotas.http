@@ -35,3 +35,19 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/produtos/3
+
+###
+
+PUT http://localhost:3000/produtos/2
+Content-Type: application/json
+
+{
+    "produto": "Peixe",
+    "preco": 30,
+    "quantidade" : 5
+}
+
+###
+
+GET http://localhost:3000/produtos/2
+Content-Type: application/json

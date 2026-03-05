@@ -30,6 +30,16 @@ export class postgres{
         const prod = await sql`UPDATE produtos SET quantidade = quantidade + ${number} WHERE id=${id} RETURNING *`
     }
 
+    async UpdateProd(id,corpo){
+        const {produto, preco, quantidade} = corpo
+        const UpProd = await sql`UPDATE produtos SET produto = ${produto}, preco = ${preco}, quantidade = ${quantidade} WHERE id=${id}`
+    }
+
+    async SelectionProd(id){
+         const prod = await sql`SELECT * FROM produtos WHERE id=${id}`
+         return prod
+    }
+
     async DeleteProd(id){
         await sql`DELETE FROM produtos WHERE id=${id}`
     }
