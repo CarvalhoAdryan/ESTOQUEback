@@ -1,7 +1,10 @@
 import express from 'express'
 import { postgres } from './DataBasePG.js'
+import cors from 'cors'
 
 const app = express()
+
+app.use(cors())
 app.use(express.json())
 
 const port = process.env.PORT
@@ -41,6 +44,12 @@ app.put("/produto-compra/:id", async(req,res) => {
 app.put("/produto-compra/:id/:number", async(req,res) =>{
     const { id, number } = req.params
     const prod = await db.SumProds(id, number)
+    res.status(200).json(prod)
+})
+
+app.put("/produto-venda/:id/:number", async(req,res) =>{
+    const { id, number } = req.params
+    const prod = await db.SubtractProds(id, number)
     res.status(200).json(prod)
 })
 
